@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.myapplication</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ImageView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+    <span class="s0">int </span><span class="s1">player=</span><span class="s2">1</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">[][] winningState={{</span><span class="s2">0</span><span class="s0">,</span><span class="s2">1</span><span class="s0">,</span><span class="s2">2</span><span class="s1">}</span><span class="s0">,</span><span class="s1">{</span><span class="s2">3</span><span class="s0">,</span><span class="s2">4</span><span class="s0">,</span><span class="s2">5</span><span class="s1">}</span><span class="s0">,</span><span class="s1">{</span><span class="s2">6</span><span class="s0">,</span><span class="s2">7</span><span class="s0">,</span><span class="s2">8</span><span class="s1">}</span><span class="s0">,</span><span class="s1">{</span><span class="s2">0</span><span class="s0">,</span><span class="s2">4</span><span class="s0">,</span><span class="s2">8</span><span class="s1">}</span><span class="s0">,</span><span class="s1">{</span><span class="s2">2</span><span class="s0">,</span><span class="s2">4</span><span class="s0">,</span><span class="s2">6</span><span class="s1">}</span><span class="s0">,</span><span class="s1">{</span><span class="s2">0</span><span class="s0">,</span><span class="s2">3</span><span class="s0">,</span><span class="s2">6</span><span class="s1">}</span><span class="s0">,</span><span class="s1">{</span><span class="s2">1</span><span class="s0">,</span><span class="s2">4</span><span class="s0">,</span><span class="s2">7</span><span class="s1">}</span><span class="s0">,</span><span class="s1">{</span><span class="s2">2</span><span class="s0">,</span><span class="s2">5</span><span class="s0">,</span><span class="s2">8</span><span class="s1">}}</span><span class="s0">;</span>
+    <span class="s0">int </span><span class="s1">[] gameState={-</span><span class="s2">1</span><span class="s0">,</span><span class="s1">-</span><span class="s2">1</span><span class="s0">,</span><span class="s1">-</span><span class="s2">1</span><span class="s0">,</span><span class="s1">-</span><span class="s2">1</span><span class="s0">,</span><span class="s1">-</span><span class="s2">1</span><span class="s0">,</span><span class="s1">-</span><span class="s2">1</span><span class="s0">,</span><span class="s1">-</span><span class="s2">1</span><span class="s0">,</span><span class="s1">-</span><span class="s2">1</span><span class="s0">,</span><span class="s1">-</span><span class="s2">1</span><span class="s1">}</span><span class="s0">;</span>
+      <span class="s0">public void </span><span class="s1">load(View view){</span>
+
+       <span class="s1">ImageView v= (ImageView) view</span><span class="s0">;</span>
+<span class="s0">int </span><span class="s1">tag=Integer.parseInt(v.getTag().toString())</span><span class="s0">;</span>
+          <span class="s0">if</span><span class="s1">(player==</span><span class="s2">1</span><span class="s1">){</span>
+              <span class="s1">v.setImageResource(R.drawable.cross)</span><span class="s0">;</span>
+              <span class="s1">gameState[tag]=player</span><span class="s0">;</span>
+              <span class="s1">player= </span><span class="s2">0</span><span class="s0">;</span>
+          <span class="s1">}</span>
+          <span class="s0">else</span><span class="s1">{</span>
+              <span class="s1">v.setImageResource(R.drawable.download)</span><span class="s0">;</span>
+              <span class="s1">gameState[tag]=player</span><span class="s0">;</span>
+              <span class="s1">player=</span><span class="s2">1</span><span class="s0">;</span>
+          <span class="s1">}</span>
+          <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s2">0</span><span class="s0">;</span><span class="s1">i&lt;winningState.length</span><span class="s0">;</span><span class="s1">i++){</span>
+              <span class="s0">if</span><span class="s1">((gameState[winningState[i][</span><span class="s2">0</span><span class="s1">]]==gameState[winningState[i][</span><span class="s2">1</span><span class="s1">]] &amp;&amp; gameState[winningState[i][</span><span class="s2">1</span><span class="s1">]]==gameState[winningState[i][</span><span class="s2">2</span><span class="s1">]] &amp;&amp; gameState[winningState[i][</span><span class="s2">0</span><span class="s1">]] &gt;-</span><span class="s2">1</span><span class="s1">) ||</span>
+                      <span class="s1">(gameState[winningState[i][</span><span class="s2">3</span><span class="s1">]]==gameState[winningState[i][</span><span class="s2">4</span><span class="s1">]] &amp;&amp; gameState[winningState[i][</span><span class="s2">4</span><span class="s1">]]==gameState[winningState[i][</span><span class="s2">5</span><span class="s1">]] &amp;&amp; gameState[winningState[i][</span><span class="s2">3</span><span class="s1">]] &gt;-</span><span class="s2">1</span><span class="s1">) ||</span>
+                      <span class="s1">(gameState[winningState[i][</span><span class="s2">6</span><span class="s1">]]==gameState[winningState[i][</span><span class="s2">7</span><span class="s1">]] &amp;&amp; gameState[winningState[i][</span><span class="s2">7</span><span class="s1">]]==gameState[winningState[i][</span><span class="s2">8</span><span class="s1">]] &amp;&amp; gameState[winningState[i][</span><span class="s2">6</span><span class="s1">]] &gt;-</span><span class="s2">1</span><span class="s1">) ||</span>
+              <span class="s1">) {</span>
+                  <span class="s1">Toast.makeText(</span><span class="s0">this, </span><span class="s3">&quot;winner is&quot; </span><span class="s1">+ (player == </span><span class="s2">0</span><span class="s1">?</span><span class="s2">1</span><span class="s1">:</span><span class="s2">0</span><span class="s1">)</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+              <span class="s1">}</span>
+          <span class="s1">}</span>
+      <span class="s1">}</span>
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_main)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
